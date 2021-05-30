@@ -1,6 +1,7 @@
 import mongoose, { Schema } from 'mongoose'
 import IBook from '../interfaces/book'
 
+
 const BookSchema: Schema = new Schema(
   {
       title: { type: String, required: true },
@@ -11,5 +12,12 @@ const BookSchema: Schema = new Schema(
       timestamps: true
   }
 );
+
+// EXTRA FUNCTIONALITY OF TYPESCRIPT ALERT - post/pre function
+// Choose one of the actions you want to bind the post operation to
+BookSchema.post<IBook>('save', function () {
+  this.extraInformation = "This is some extra info we want to put onto this entry after the save"
+});
+
 
 export default mongoose.model<IBook>('Book', BookSchema);
