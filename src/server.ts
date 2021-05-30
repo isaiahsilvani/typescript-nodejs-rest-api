@@ -8,12 +8,13 @@ const NAMESPACE = 'Server'  // What we use to determine where logs are coming fr
 const app = express()
 
 /**  Logging the request  **/
-app.use((req, res, nect) => {
+app.use((req, res, next) => {
   logging.info(NAMESPACE, `METHOD - [${req.method}], URL - [${req.url}], IP = [${req.socket.remoteAddress}]`)
 
   res.on('finish', () => {
     logging.info(NAMESPACE, `METHOD - [${req.method}], URL - [${req.url}], IP = [${req.socket.remoteAddress}], STATUS - [${res.statusCode}]`)
   })
+  next() // need to call the next function so request will pass through our middleware without stopping here
 })
 
 /** Parse the request */
