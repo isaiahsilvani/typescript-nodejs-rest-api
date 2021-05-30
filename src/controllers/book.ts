@@ -3,7 +3,7 @@ import logging from '../config/logging'
 
 const NAMESPACE = 'Sample Controller'
 
-const sampleHealthCheck = (req: Request, res: Response, next: NextFunction) => {
+const getAllBooks = (req: Request, res: Response, next: NextFunction) => {
   logging.info(NAMESPACE, 'Sample health check route called')
 
   return res.status(200).json({
@@ -12,5 +12,5 @@ const sampleHealthCheck = (req: Request, res: Response, next: NextFunction) => {
 }
 
 export default {
-  sampleHealthCheck
+  getAllBooks
 }

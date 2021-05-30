@@ -3,13 +3,16 @@ import express from 'express'
 import bodyParser from 'body-parser'
 import logging from './config/logging'
 import config from './config/config'
-import router from './routes/sample'
+
 
 const NAMESPACE = 'Server'  // What we use to determine where logs are coming from
 const app = express()
 
+/* Connect to MongoDB */
+require("./config/database");
+
 /** Require the routes **/
-const sampleRoutes = require('./routes/sample')
+const bookRoutes = require('./routes/book')
 
 /**  Logging the request  **/
 app.use((req, res, next) => {
@@ -40,7 +43,7 @@ app.use((req, res, next) => {
 });
 
 /** Routes **/
-app.use('/sample', sampleRoutes)
+app.use('/api/books', bookRoutes)
 
 /** Error Handling **/
 app.use((req, res, next) => {
