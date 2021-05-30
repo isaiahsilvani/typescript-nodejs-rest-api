@@ -1,0 +1,4 @@
+npm init -y
+1. Change configurations in package.json and tsconfig.json
+npm install express body-parser dotenv
+npm install --save-dev @types/express @types/body-parser @types/dotenv
