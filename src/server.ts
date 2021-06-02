@@ -1,6 +1,5 @@
 import http from 'http'
 import express from 'express'
-import bodyParser from 'body-parser'
 import logging from './config/logging'
 import config from './config/config'
 
@@ -12,7 +11,7 @@ const app = express()
 require("./config/database");
 
 /** Require the routes **/
-const bookRoutes = require('./routes/book')
+const userScoreRoutes = require('./routes/userscore')
 
 /**  Logging the request  **/
 app.use((req, res, next) => {
@@ -43,7 +42,7 @@ app.use((req, res, next) => {
 });
 
 /** Routes **/
-app.use('/api/books', bookRoutes)
+app.use('', userScoreRoutes)
 
 /** Error Handling **/
 app.use((req, res, next) => {
